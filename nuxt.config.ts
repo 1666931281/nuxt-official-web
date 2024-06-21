@@ -39,9 +39,9 @@ export default defineNuxtConfig({
   vite: {
     server: {
       proxy: {
-        [`${process.env.NUXT_BASE_URL}/gingame`]: {
-          // 电竞行业接口代理地址
-          target: 'https://app.ingame.qq.com',
+        [`${process.env.NUXT_BASE_URL}/api`]: {
+          // 接口代理地址
+          target: 'https://baidu.com',
           rewrite: (path) =>
             path.replace(new RegExp(`${process.env.NUXT_BASE_URL}`), ''),
           changeOrigin: true,
@@ -77,20 +77,18 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'zh-CN en-US',
       },
-      title: '腾讯电竞官网',
+      title: '官网',
       meta: [
         {
           name: 'description',
-          content:
-            '腾讯电竞为你加冕 腾讯电竞作为互娱第五大业务板块致力于推动电竞行业发展',
+          content: '',
         },
         {
           name: 'keywords',
-          content:
-            '腾讯电竞、电竞、英雄联盟、王者荣耀、和平精英、竞赛、积分、总决赛、LPL、KPL、TGL',
+          content: 'AI 科技 自动化 智能制造',
         },
-        { name: 'publisher', content: 'Tencent' },
-        { name: 'author', content: 'Tencent-TGideas' },
+        { name: 'publisher', content: 'baissic' },
+        { name: 'author', content: 'baissic-TGideas' },
         { name: 'robots', content: 'all' },
         {
           name: 'viewport',
@@ -169,8 +167,8 @@ export default defineNuxtConfig({
     },
     // 该配置用于服务端请求转发
     routeRules: {
-      '/gingame/**': {
-        proxy: 'https://app.ingame.qq.com/gingame/**',
+      '/api/**': {
+        proxy: 'https://baidu.com/api/**',
       },
     },
   },
