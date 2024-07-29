@@ -88,7 +88,7 @@ export default defineNuxtConfig({
   build: {
     analyze: true, // 开启打包分析
   },
-  modules: ['@nuxt/eslint', '@element-plus/nuxt'],
+  modules: ['@nuxt/eslint', '@element-plus/nuxt', '@unocss/nuxt'],
   css: ['element-plus/dist/index.css', '@/assets/styles/main.css'],
   vite: {
     server: {

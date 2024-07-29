@@ -1,5 +1,7 @@
 <template>
-  <div class="index_page"></div>
+  <div class="index_page">
+    <button class="bgi-[mac-tab-bar/dianyin.svg]">按钮</button>
+  </div>
 </template>
 <script setup lang="ts">
 import { onMounted } from 'vue';

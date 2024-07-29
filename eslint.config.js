@@ -3,7 +3,7 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginVue from 'eslint-plugin-vue';
-
+import unocss from '@unocss/eslint-config/flat';
 export default withNuxt([
   {
     languageOptions: {
@@ -26,4 +26,5 @@ export default withNuxt([
     files: ['app.vue', 'error.vue', 'pages/**/*.vue', 'layouts/**/*.vue'],
   },
   { ignores: ['.nuxt/'] }, // 忽略校验 .nuxt/ 目录下的所有文件
+  unocss,
 ]);
