@@ -88,14 +88,14 @@ export default defineNuxtConfig({
   build: {
     analyze: true, // 开启打包分析
   },
-  modules: ['@nuxt/eslint', '@element-plus/nuxt', '@unocss/nuxt'],
+  modules: ['@nuxt/eslint', '@element-plus/nuxt', '@unocss/nuxt', '@pinia/nuxt'],
   css: ['element-plus/dist/index.css', '@/assets/styles/main.css'],
   vite: {
     server: {
       proxy: {
-        [`${process.env.NUXT_BASE_URL}/gingame`]: {
+        [`${process.env.NUXT_BASE_URL}/xxx`]: {
           // 电竞行业接口代理地址
-          target: 'https://app.ingame.qq.com',
+          target: 'https://app.ingame.com',
           rewrite: (path) => path.replace(new RegExp(`${process.env.NUXT_BASE_URL}`), ''),
           changeOrigin: true,
           prependPath: true,

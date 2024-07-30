@@ -12,14 +12,18 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "typecheck": "prettier --write '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "@nuxt/eslint": "^0.3.13",
+    "@pinia/nuxt": "^0.5.2",
+    "@vueuse/core": "^10.11.0",
     "element-plus": "^2.7.6",
     "nuxt": "^3.12.2",
     "nuxtjs-naive-ui": "^1.0.2",
+    "pinia": "^2.2.0",
     "vue": "latest"
   },
   "devDependencies": {
