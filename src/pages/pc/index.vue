@@ -5,28 +5,23 @@
 </template>
 <script setup lang="ts">
 import { onMounted } from 'vue';
-// import { getContentListByChannel } from "@/apis/globalApi";
+import { useStore } from '@/store/index';
+const { globalData } = useStore();
+const { keyDown } = UseKeyEvent();
 
-// 图文资讯信息接口查询参数
-// const pictureQuery = ref({
-//   order: 3,
-//   ingame_channel_id: 138,
-//   start: 1,
-//   num:4,
-//   game: 'esports',
-// });
-// const dataList=ref({})
+const registerKeyDown = () => {
+  const passingKey = 'Enter';
+  keyDown(passingKey)(() => {
+    console.log('点击了');
+    console.log(globalData.keyDownObj);
+  });
+};
 onMounted(() => {
-  //  getData()
+  registerKeyDown();
 });
-// const getData = async()=>{
-//    const res=await getContentListByChannel(pictureQuery.value)
-//    dataList.value=res.data
-// }
-//     const handerClick=()=>{
-//         pictureQuery.value.start+=1
-//       getData()
-//     }
+onUnmounted(() => {
+  document.onkeydown = null;
+});
 </script>
 <style lang="scss" scoped>
 .index_page {
