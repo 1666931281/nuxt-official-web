@@ -32,8 +32,12 @@ export default defineNuxtConfig({
     '@/': '/src',
     '@assets': '/src/assets',
   },
+
   typescript: { typeCheck: true },
-  srcDir: 'src/', //指定src作为根目录
+
+  //指定src作为根目录
+  srcDir: 'src/',
+
   app: {
     baseURL: process.env.NUXT_BASE_URL,
     // buildAssetsDir: '/',
@@ -68,28 +72,37 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   router: {
     options: {
       hashMode: false,
     },
   },
-  serverDir: 'server', //指定服务器代码目录
+
+  //指定服务器代码目录
+  serverDir: 'server',
+
   devtools: { enabled: true },
+
   runtimeConfig: {
     public: {
       ...getOwnEnv(process.env),
     },
   },
+
   eslint: {
     config: {
       standalone: false, // 关闭默认配置（默认情况下，此模块会使用推荐的规则安装 JS、TS 和 Vue 插件）
     },
   },
+
   build: {
     analyze: true, // 开启打包分析
   },
-  modules: ['@nuxt/eslint', '@element-plus/nuxt', '@unocss/nuxt', '@pinia/nuxt'],
+
+  modules: ['@nuxt/eslint', '@element-plus/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/i18n'],
   css: ['element-plus/dist/index.css', '@/assets/styles/main.css'],
+
   vite: {
     server: {
       proxy: {
@@ -114,6 +127,7 @@ export default defineNuxtConfig({
       removeConsole(),
     ],
   },
+
   nitro: {
     // 配置客户端请求代理
     devProxy: {
@@ -130,4 +144,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  i18n: {
+    strategy: 'prefix_and_default', // 添加路由前缀的方式
+    locales: ['en', 'zh'], // 配置语种
+    defaultLocale: 'zh', // 默认语种
+    vueI18n: './i18n.config.ts', // 通过vueI18n配置
+  },
+  compatibilityDate: '2024-08-01',
 });
