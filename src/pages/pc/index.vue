@@ -6,9 +6,16 @@
     >
       切换中文
     </button>
-    <button @click="setLocale('en')">切换英文</button>
+    <button
+      @click="setLocale('en')"
+      h-50px
+      w-100px
+    >
+      切换英文
+    </button>
     <p>{{ $t('menu.ecological') }}</p>
     <p>{{ $t('menu.home') }}</p>
+    <div class="dec"></div>
   </div>
 </template>
 <script setup lang="ts">
@@ -25,6 +32,8 @@ const registerKeyDown = () => {
     console.log(globalData.keyDownObj);
   });
 };
+console.log(useRuntimeConfig());
+
 onMounted(() => {
   registerKeyDown();
   console.log('locale--language', locale.value);
@@ -43,5 +52,10 @@ onUnmounted(() => {
   left: 50%;
   bottom: 0;
   transform: translate(-50%, -50%);
+}
+.dec {
+  width: 100px;
+  height: 100px;
+  background: goldenrod;
 }
 </style>
