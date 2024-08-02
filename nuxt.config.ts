@@ -24,8 +24,11 @@ function getOwnEnv(env: Record<string, any>): Record<string, any> {
  * @returns
  */
 function createEndWithSlash(path: string, slash: string = '/'): string {
-  return path?.endsWith(slash) ? path : `${path}${slash}`;
+  const result = path?.endsWith(slash) ? path : `${path}${slash}`;
+  return result;
 }
+console.log(`${createEndWithSlash(process.env.NUXT_BASE_URL as string)}rem.js`);
+
 export default defineNuxtConfig({
   ssr: false,
   alias: {
@@ -67,7 +70,7 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          src: `${createEndWithSlash(process.env.NUXT_BASE_URL as string)}rem.js`,
+          // src: `${createEndWithSlash(process.env.NUXT_BASE_URL as string)}rem.js`,
         },
       ],
     },
@@ -78,7 +81,24 @@ export default defineNuxtConfig({
       hashMode: false,
     },
   },
-
+  postcss: {
+    plugins: {
+      // 这个工具可以实现自动添加CSS3前缀
+      autoprefixer: {
+        overrideBrowserslist: ['last 5 version', '>1%', 'ie >=8'],
+      },
+      'postcss-pxtorem': {
+        rootValue: 100, // 指定转换倍率，我现在设置这个表示1rem=100px;
+        propList: ['*'], // 属性列表，表示你要把哪些css属性的px转换成rem，这个*表示所有
+        mediaQuery: false, // 是否允许使用媒体查询，false媒体查询的代码可用，true不可用
+        exclude: 'ignore',
+        replace: true, // 替换包含rem的规则，而不是添加回退
+        minPixelValue: 1, // 需要转换的最小值，一般1px像素不转换，以上才转换
+        unitPrecision: 6, // 转换成rem单位的小数点后的保留位数
+        selectorBalckList: ['van'], // 匹配不被转换为rem的选择器
+      },
+    },
+  },
   //指定服务器代码目录
   serverDir: 'server',
 
@@ -107,7 +127,7 @@ export default defineNuxtConfig({
     server: {
       proxy: {
         [`${process.env.NUXT_BASE_URL}/xxx`]: {
-          // 电竞行业接口代理地址
+          // 接口代理地址
           target: 'https://app.ingame.com',
           rewrite: (path) => path.replace(new RegExp(`${process.env.NUXT_BASE_URL}`), ''),
           changeOrigin: true,
@@ -145,7 +165,7 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    strategy: 'prefix_and_default', // 添加路由前缀的方式
+    strategy: 'no_prefix', // 添加路由前缀的方式
     locales: ['en', 'zh'], // 配置语种
     defaultLocale: 'zh', // 默认语种
     vueI18n: './i18n.config.ts', // 通过vueI18n配置
