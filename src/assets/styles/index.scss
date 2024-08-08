@@ -1,0 +1,16 @@
+@use './variables.css'; // 全局 CSS 变量
+@use './reset.scss';
+
+body {
+    --uno-apply: c-[--app-body-text-color] bg-[--app-body-bg-color] font-[--app-font-family];
+}
+
+/* 灰色模式 */
+.showGreyMode {
+    filter: grayscale(1);
+}
+
+/* 色弱模式 */
+.showColorWeakness {
+    filter: invert(0.8);
+}

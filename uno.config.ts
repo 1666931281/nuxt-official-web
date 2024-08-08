@@ -17,6 +17,7 @@ export default defineConfig({
   theme: {
     colors: {
       NuxtFont: '#000000',
+      boxBg: '#6032b5',
     },
   },
   presets: [

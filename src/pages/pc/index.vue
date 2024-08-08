@@ -1,21 +1,20 @@
 <template>
   <div class="index_page">
     <button
-      class="bgi-[mac-tab-bar/dianyin.svg]"
       @click="setLocale('zh')"
+      text-16px
     >
       切换中文
     </button>
-    <button
-      @click="setLocale('en')"
-      h-50px
-      w-100px
-    >
-      切换英文
-    </button>
+    <button @click="setLocale('en')">切换英文</button>
     <p>{{ $t('menu.ecological') }}</p>
     <p>{{ $t('menu.home') }}</p>
-    <div class="dec"></div>
+    <div
+      class="bg-no-repeat bgi-[mac-tab-bar/dianyin.svg]"
+      costom-btn
+      h-50px
+      w-50px
+    ></div>
   </div>
 </template>
 <script setup lang="ts">
@@ -42,20 +41,3 @@ onUnmounted(() => {
   document.onkeydown = null;
 });
 </script>
-<style lang="scss" scoped>
-.index_page {
-  position: relative;
-  height: 100vh;
-}
-.tab_bar {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, -50%);
-}
-.dec {
-  width: 100px;
-  height: 100px;
-  background: goldenrod;
-}
-</style>

@@ -6,11 +6,7 @@ interface mossApiRequest {
   start: number;
   num: number;
 }
-// interface HomeServiceGetHomeInfoResponse {
-//   data: HomeDataRes;
-//   code: number;
-//   msg: string;
-// }
+
 const MOOS_BASE_URL = useRuntimeConfig().public.NUXT_MOSS_API_BASE;
 console.log(MOOS_BASE_URL);
 
