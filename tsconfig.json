@@ -1,4 +1,29 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "unplugin-vue-macros/macros-global",
+      "unplugin-vue-router/client",
+      "element-plus/global",
+      "node",
+      "crypto-js"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": false
+    // 移除不必要的包含模式
+  },
+  // 添加包含路径
+  "include": ["src/**/*.ts", ".nuxt/**/*.ts"]
 }

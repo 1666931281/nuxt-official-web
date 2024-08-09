@@ -1,4 +1,4 @@
 export interface keyDownType {
-  key: number | string;
-  trigger: boolean;
+  key: number | string
+  trigger: boolean
 }

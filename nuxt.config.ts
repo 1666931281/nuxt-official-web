@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { defineNuxtConfig } from 'nuxt/config';
-import viteCompression from 'vite-plugin-compression';
-import removeConsole from 'vite-plugin-remove-console';
+import { defineNuxtConfig } from 'nuxt/config'
+import viteCompression from 'vite-plugin-compression'
+import removeConsole from 'vite-plugin-remove-console'
 
 /**
  * 获取自定义环境变量（以NUXT_开头的环境变量都视作是自定义的环境变量）
@@ -9,13 +9,14 @@ import removeConsole from 'vite-plugin-remove-console';
  * @returns
  */
 function getOwnEnv(env: Record<string, any>): Record<string, any> {
-  const ownEnv: Record<string, any> = {};
+  const ownEnv: Record<string, any> = {}
   for (const key in env) {
     if (Object.prototype.hasOwnProperty.call(env, key) && key.startsWith('NUXT_')) {
-      ownEnv[key] = env[key];
+      // eslint-disable-next-line ts/no-unsafe-assignment
+      ownEnv[key] = env[key]
     }
   }
-  return ownEnv;
+  return ownEnv
 }
 
 /**
@@ -37,7 +38,7 @@ export default defineNuxtConfig({
 
   typescript: { typeCheck: true },
 
-  //指定src作为根目录
+  // 指定src作为根目录
   srcDir: 'src/',
 
   app: {
@@ -65,7 +66,7 @@ export default defineNuxtConfig({
           name: 'viewport',
           content: 'width=device-width, initial-scale=1.0,viewport-fit=cover',
         },
-        { 'http-equiv': 'content-type', content: 'IE=edge,chrome=1' },
+        { 'http-equiv': 'content-type', 'content': 'IE=edge,chrome=1' },
       ],
       script: [
         {
@@ -80,7 +81,7 @@ export default defineNuxtConfig({
       hashMode: false,
     },
   },
-  //指定服务器代码目录
+  // 指定服务器代码目录
   serverDir: 'server',
 
   devtools: { enabled: true },
@@ -110,7 +111,7 @@ export default defineNuxtConfig({
         [`${process.env.NUXT_BASE_URL}/xxx`]: {
           // 接口代理地址
           target: 'https://app.ingame.com',
-          rewrite: (path) => path.replace(new RegExp(`${process.env.NUXT_BASE_URL}`), ''),
+          rewrite: path => path.replace(new RegExp(`${process.env.NUXT_BASE_URL}`), ''),
           changeOrigin: true,
           prependPath: true,
         },
@@ -152,4 +153,4 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.ts', // 通过vueI18n配置
   },
   compatibilityDate: '2024-08-01',
-});
+})

@@ -2,15 +2,15 @@
 @use './reset.scss';
 
 body {
-    --uno-apply: c-[--app-body-text-color] bg-[--app-body-bg-color] font-[--app-font-family];
+  --uno-apply: c-[--app-body-text-color] bg-[--app-body-bg-color] font-[--app-font-family];
 }
 
 /* 灰色模式 */
 .showGreyMode {
-    filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 /* 色弱模式 */
 .showColorWeakness {
-    filter: invert(0.8);
+  filter: invert(0.8);
 }

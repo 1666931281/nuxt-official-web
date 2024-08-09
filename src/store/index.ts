@@ -1,9 +1,12 @@
-import { createPinia } from 'pinia';
-import useGlobalStore from './global';
-const store = createPinia();
-export { store };
-export const useStore = () => ({
-  globalData: useGlobalStore(),
-});
+import { createPinia } from 'pinia'
+import useGlobalStore from './global'
 
-export default useStore;
+const store = createPinia()
+export { store }
+export function useStore() {
+  return {
+    globalData: useGlobalStore(),
+  }
+}
+
+export default useStore
