@@ -9,10 +9,10 @@
     "dev:prod": "nuxt dev --dotenv env/.env.prod --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "npx simple-git-hooks",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
-    "typecheck": "prettier --write '**/*.{js,jsx,ts,tsx}'"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -61,7 +61,7 @@
     "vue-tsc": "^2.0.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "pnpm lint-staged && pnpm typecheck"
   },
   "lint-staged": {
     "*": "eslint --fix"

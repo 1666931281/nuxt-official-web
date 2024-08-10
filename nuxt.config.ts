@@ -92,12 +92,6 @@ export default defineNuxtConfig({
     },
   },
 
-  eslint: {
-    config: {
-      standalone: false, // 关闭默认配置（默认情况下，此模块会使用推荐的规则安装 JS、TS 和 Vue 插件）
-    },
-  },
-
   build: {
     analyze: true, // 开启打包分析
   },

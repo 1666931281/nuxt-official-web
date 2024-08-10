@@ -8,15 +8,12 @@ const { keyDown } = UseKeyEvent()
 const { locale, setLocale } = useI18n()
 function registerKeyDown() {
   const passingKey = 'Enter'
-  keyDown(passingKey)(() => {
+    keyDown(passingKey)(() => {
     console.log('点击了')
     console.log(globalData.keyDownObj)
   })
 }
 console.log(useRuntimeConfig())
-function setActiveTab(idx: number) {
-
-}
 onMounted(() => {
   registerKeyDown()
   console.log('locale--language', locale.value)
