@@ -2,19 +2,26 @@ import withNuxt from './.nuxt/eslint.config.mjs';
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import pluginVue from 'eslint-plugin-vue';
-import unocss from '@unocss/eslint-config/flat';
+import eslintPluginVue from 'eslint-plugin-vue';
+
 export default withNuxt([
   {
     languageOptions: {
       globals: { ...globals.browser, ...globals.node, ...globals.es2021 },
       ecmaVersion: 'latest',
-      parser: tseslint.parser,
     },
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  ...pluginVue.configs['flat/essential'], // Vue3
+  ...eslintPluginVue.configs['flat/recommended'], // Vue3
+  {
+    files: ['*.vue', '**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+    },
+  },
   {
     rules: {
       'vue/multi-word-component-names': 'off', //关闭检测vue文件多单词命名
@@ -23,8 +30,7 @@ export default withNuxt([
     },
   },
   {
-    files: ['app.vue', 'error.vue', 'pages/**/*.vue', 'layouts/**/*.vue'],
+    files: ['app.vue', 'pages/**/*.vue', 'layouts/**/*.vue'],
   },
-  { ignores: ['.nuxt/'] }, // 忽略校验 .nuxt/ 目录下的所有文件
-  unocss,
+  { ignores: ['.nuxt/', 'src/assets/'] }, // 忽略校验 .nuxt/ 目录下的所有文件
 ]);

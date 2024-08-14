@@ -2,7 +2,7 @@
   <div>
     <header>头部</header>
     <main>
-      <nuxt-page />
+      <NuxtPage />
     </main>
     <footer>尾部</footer>
   </div>

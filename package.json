@@ -1,7 +1,7 @@
 {
   "name": "nuxt-app",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv env/.env.dev --host",
@@ -9,11 +9,11 @@
     "dev:prod": "nuxt dev --dotenv env/.env.prod --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "npx prepare",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky install",
-    "typecheck": "prettier --write '**/*.{js,jsx,ts,tsx}'"
+    "typecheck": "vue-tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -29,7 +29,9 @@
     "vue-i18n": "^9.13.1"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.25.0",
     "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@element-plus/nuxt": "^1.0.9",
     "@eslint/js": "^9.8.0",
     "@iconify-json/carbon": "^1.1.36",
@@ -42,15 +44,13 @@
     "@unocss/reset": "^0.61.3",
     "crypto-js": "^4.2.0",
     "eslint": "~9.8.0",
+    "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-vue": "^9.26.0",
     "globals": "^15.7.0",
-    "husky": "^8.0.0",
+    "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
     "naive-ui": "^2.38.2",
-    "postcss-preset-env": "^9.6.0",
-    "postcss-px-to-viewport": "^1.1.1",
-    "postcss-pxtorem": "^6.1.0",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
     "typescript-eslint": "^7.0.0",
