@@ -2,11 +2,21 @@
   "files.associations": {
     "*.css": "postcss"
   },
+
+  // Enable the ESlint flat config support
+  "eslint.experimental.useFlatConfig": true,
+
+  // Disable the default formatter
+  // "prettier.enable": false,
+  "editor.formatOnSave": true,
+
+  // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
 
+  // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "warn" },
     { "rule": "*-indent", "severity": "warn" },
@@ -18,6 +28,11 @@
     { "rule": "*quotes", "severity": "warn" },
     { "rule": "*semi", "severity": "warn" }
   ],
+
+  // The following is optional.
+  // It's better to put under project setting `.vscode/settings.json`
+  // to avoid conflicts with working with different eslint configs
+  // that does not support all formats.
   "eslint.validate": [
     "javascript",
     "javascriptreact",

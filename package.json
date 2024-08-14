@@ -9,10 +9,11 @@
     "dev:prod": "nuxt dev --dotenv env/.env.prod --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "npx simple-git-hooks",
+    "postinstall": "npx prepare",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -46,12 +47,12 @@
     "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-vue": "^9.26.0",
     "globals": "^15.7.0",
+    "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
     "naive-ui": "^2.38.2",
     "prettier": "^3.3.3",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
-    "simple-git-hooks": "^2.11.1",
     "typescript-eslint": "^7.0.0",
     "unocss": "^0.61.3",
     "unplugin-auto-import": "^0.17.6",
@@ -59,11 +60,5 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-remove-console": "^2.2.0",
     "vue-tsc": "^2.0.0"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged && pnpm typecheck"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
   }
 }

@@ -12,7 +12,6 @@ function getOwnEnv(env: Record<string, any>): Record<string, any> {
   const ownEnv: Record<string, any> = {}
   for (const key in env) {
     if (Object.prototype.hasOwnProperty.call(env, key) && key.startsWith('NUXT_')) {
-      // eslint-disable-next-line ts/no-unsafe-assignment
       ownEnv[key] = env[key]
     }
   }
@@ -102,7 +101,7 @@ export default defineNuxtConfig({
   vite: {
     server: {
       proxy: {
-        [`${process.env.NUXT_BASE_URL}/xxx`]: {
+        [`${process.env.NUXT_BASE_URL}/game`]: {
           // 接口代理地址
           target: 'https://app.ingame.com',
           rewrite: path => path.replace(new RegExp(`${process.env.NUXT_BASE_URL}`), ''),

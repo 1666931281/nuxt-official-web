@@ -9,7 +9,6 @@ export default withNuxt([
     languageOptions: {
       globals: { ...globals.browser, ...globals.node, ...globals.es2021 },
       ecmaVersion: 'latest',
-      parser: tseslint.parser,
     },
   },
   pluginJs.configs.recommended,

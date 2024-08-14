@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const router = useRouter()
 const targetType = useDeviceType()
-const layoutName = ref('pc-layout')
+const layoutName =  ref<any>('pc-layout')
 watchEffect(() => {
   if (router.currentRoute.value.path === '/404') {
     layoutName.value = 'null'
